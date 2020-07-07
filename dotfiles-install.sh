@@ -7,9 +7,15 @@
 ( # append alias to the bashrc
 # TODO: make it POSIX and portable to any shell
 echo ""
-echo "# dotfiles alias"
+echo "#"
+echo "# # dotfiles alias and lazy completion"
+echo "#"
 echo "alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"
+echo "if declare -f __load_completion > /dev/null; then"
+echo "	__load_completion 'git'"
+echo "	__git_complete dotfiles __git_main"
+echo "fi"
 	) >> $HOME/.bashrc
 
 # checkout especific branch if given
-source $HOME/.bashrc && dotfiles checkout $2
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout $2
