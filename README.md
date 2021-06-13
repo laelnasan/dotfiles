@@ -9,6 +9,6 @@ system
 
 ```
 wget https://raw.githubusercontent.com/laelnasan/dotfiles/master/dotfiles-install.sh
-bash dotfiles-install.sh laelnasan/dotfiles" manjaro
+bash dotfiles-install.sh "laelnasan/dotfiles" manjaro
 source $HOME/.bashrc
 ```
