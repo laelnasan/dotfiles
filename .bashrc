@@ -40,87 +40,9 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-## nasan cool PS1
-# get current branch in git repo
-function parse_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! "${BRANCH}" == "" ]
-	then
-		STAT=`parse_git_dirty`
-		echo "[${BRANCH}${STAT}]"
-	else
-		echo ""
-	fi
-}
-
-# get current status of git repo
-function parse_git_branch() {
-	# define status
-	status=`git status 2>&1 | sed -n tee`
-	bits=''
-
-	# renamed
-	if echo -n "${status}" | grep "renamed:" &> /dev/null; then
-		bits=">${bits}"
-	fi
-	# ahead
-	if echo -n "${status}" | grep "Your branch is ahead of" &> /dev/null; then
-		bits="*${bits}"
-	fi
-	# untracked
-	if echo -n "${status}" | grep "Untracked files" &> /dev/null; then
-		bits="?${bits}"
-	fi
-	# changes not staged -> red
-	if echo -n "${status}" | grep "Untracked files" &> /dev/null; then
-		bits="?${bits}"
-	fi
-	# changes to commit -> yellow
-	if echo -n "${status}" | grep "Untracked files" &> /dev/null; then
-		bits="?${bits}"
-	fi
-
-	# newfile
-	if echo -n "${status}" | grep "new file:" &> /dev/null; then
-		bits="+${bits}"
-	fi
-	# deleted
-	if echo -n "${status}" | grep "deleted:" &> /dev/null; then
-		bits="x${bits}"
-	fi
-	# dirty
-	if echo -n "${status}" | grep "modified:" &> /dev/null; then
-		bits="!${bits}"
-	fi
-	# return
-	if [ ! "${bits}" == "" ]; then
-		echo "[ ${bits}]"
-	else
-		echo ""
-	fi
-}
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+# use gitstatus prompt TODO: change it latter to be cooler
+BASH_SOURCE=( "$HOME/.config/gitstatus" )
+source $HOME/.config/gitstatus/gitstatus.prompt.sh
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

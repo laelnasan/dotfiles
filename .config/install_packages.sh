@@ -9,6 +9,8 @@ sudo apt install -y libnss3 xsel xcape
 # install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
+###### some prompt eye-candy and git utility
+git clone --depth=1 https://github.com/romkatv/gitstatus.git $HOME/.config/gitstatus
 
 ###### configure git
 read -p "git config user name: " input
