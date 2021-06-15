@@ -98,3 +98,6 @@ xcape -e 'Control_L=Escape'
 
 # set vi mode
 set -o vi
+
+# export GPG_TTY
+export GPG_TTY=$(tty)

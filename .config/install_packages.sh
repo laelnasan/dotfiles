@@ -12,6 +12,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ###### some prompt eye-candy and git utility
 git clone --depth=1 https://github.com/romkatv/gitstatus.git $HOME/.config/gitstatus
 
+
 ###### configure git
 read -p "git config user name: " input
 git config --global user.name "$input"
