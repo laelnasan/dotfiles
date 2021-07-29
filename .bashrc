@@ -94,7 +94,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # set Control -> Escape binding
-if [ -z $(ps h -C xcape) ]; then
+if [ -z "$(ps h -C xcape)" ]; then
    xcape -e 'Control_L=Escape'
 fi
 
