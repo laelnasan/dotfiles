@@ -20,12 +20,12 @@ ginitvim = '''
   augroup end
 '''
 ## Editor minimum window width (>= 400)
-Width = 980
+Width = 1200
 ## Editor minimum window height (>= 300)
-Height = 800
+Height = 750
 
 ## Launch goneovim with full screen window size.
-# StartFullscreen = false
+StartFullscreen = true
 
 ## Editor external font-family, font-size, and linespace.
 ## This is the font and linespace settings of the graphical UI as an nvim front end.
@@ -50,7 +50,7 @@ Linespace = 5
 ## You can change the behavior of the GUI by changing the following boolean values.
 ## If you prefer the traditional Vim UI, set it to false for all.
 ## Also, `ExtMessages` is still experimental at this time and we don't recommend setting it to true if you want stability.
-ExtPopupmenu = true
+# ExtPopupmenu = true
 ExtTabline   = true
 
 ## Disables font ligatures.
@@ -74,7 +74,7 @@ ExtTabline   = true
 
 ## Draw built-in indent guide
 ## Enabling this setting will have a slight impact on performance.
-IndentGuide = true
+# IndentGuide = true
 # IndentGuideIgnoreFtList = ["md"]
 # OptionsToUseGuideWidth = "tabstop"
 
@@ -186,10 +186,10 @@ ShowIcon = true
 ## To view the minimap, launch an additional nvim instance;
 ## setting Disable to true will not launch this additional nvim instance
 ## and will completely disable the minimap feature.
-# Disable = false
+# Disable = true
 
 ## Specifies whether to show the minimap or not.
-Visible = true
+# Visible = true
 
 ## Specifies the width of the minimap.
 # Width = 100
@@ -231,4 +231,4 @@ Disable = true
 
 ## Specifies whether the last exited session should be restored at the next startup.
 
-RestoreSession = true
+RestoreSession = false

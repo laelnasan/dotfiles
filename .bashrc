@@ -94,7 +94,9 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # set Control -> Escape binding
-xcape -e 'Control_L=Escape'
+if [ -z $(ps h -C xcape) ]; then
+   xcape -e 'Control_L=Escape'
+fi
 
 # export GPG_TTY
 export GPG_TTY=$(tty)
