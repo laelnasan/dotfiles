@@ -1,4 +1,6 @@
 alias vim="/home/nasan/.local/bin/nvim.appimage"
+alias t=tmux
+alias to='tmux set-option'
 
 #
 ### dotfiles alias and lazy completion

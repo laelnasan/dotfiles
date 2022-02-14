@@ -122,8 +122,14 @@ require("lvim.lsp.manager").setup("jdtls", jdtls_opts)
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
+local formatters = require "lvim.lsp.null-ls.formatters"
 -- formatters.setup {
+formatters.setup {
+  {
+    exe = "stylua",
+    filetypes = { "lua" },
+  }
+}
 --   { exe = "black" },
 --   {
 --     exe = "prettier",
@@ -134,8 +140,6 @@ require("lvim.lsp.manager").setup("jdtls", jdtls_opts)
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { exe = "black" },
 --   {
 --     exe = "eslint_d",
 --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.

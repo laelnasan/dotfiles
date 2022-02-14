@@ -95,8 +95,17 @@ fi
 
 # set Control -> Escape binding
 if [ -z "$(ps h -C xcape)" ]; then
-   xcape -e 'Control_L=Escape'
+xcape -e 'Control_L=Escape;Control_L=Escape'
 fi
 
 # export GPG_TTY
 export GPG_TTY=$(tty)
+
+export PATH="$PATH:$HOME/.local/bin:/$HOME/.local/opt/apache-maven-3.8.4/bin"
+
+# set vi mode
+set -o vi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
